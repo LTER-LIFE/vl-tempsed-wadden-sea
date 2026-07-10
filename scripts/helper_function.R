@@ -304,3 +304,12 @@ find_time_comparison_function <- function(forcing_list) {
   list(LatestStartFunction = latest_start_function, FirstSecond = latest_start_time,
        EarliestEndFunction = earliest_end_function, LastSecond = earliest_end_time)
 }
+
+
+Def_fun <- function(name){
+  Z <- paste(as.character(deparse(name)), collapse="\n")
+  Z <- substr(Z, 1, regexpr("{",Z,fixed =TRUE)-1)
+  for (i in 1:10)
+    Z <- gsub("  ", " ", Z)
+  cat(paste(substitute(name),substr(Z, 9, nchar(Z))),"\n")
+}
